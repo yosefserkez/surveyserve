@@ -72,7 +72,7 @@ function App() {
         </Routes>
         
         {/* Show diagnostic info in development and production for debugging */}
-        {(import.meta.env.MODE === 'development' || window.location.search.includes('debug=true')) && <DiagnosticInfo />}
+        {/* {(import.meta.env.MODE === 'development' || window.location.search.includes('debug=true')) && <DiagnosticInfo />} */}
       </Router>
     </AuthProvider>
   );
