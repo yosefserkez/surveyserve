@@ -1198,21 +1198,21 @@ const SurveyListItem: React.FC<SurveyCardProps> = ({
   return (
     <div className="bg-white/80 backdrop-blur-md rounded-xl border border-white/30 shadow-md hover:shadow-lg transition-all duration-200">
       {/* Main Survey Header */}
-      <div className="p-6">
-        <div className="flex items-start justify-between mb-4">
-          {/* Left side - Survey info */}
+      <div className="p-4 sm:p-6">
+        <div className="lg:flex lg:items-start lg:justify-between">
+          {/* Survey info */}
           <div className="flex-1">
             <div className="flex items-start justify-between mb-3">
               <div className="flex-1">
-                <div className="flex items-center space-x-3 mb-3">
-                  <h3 className="text-xl font-bold text-gray-900">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 flex-1 pr-3">
                     {survey.title}
                   </h3>
                   
                   {isLoggedIn && (
                     <button
                       onClick={onToggleFavorite}
-                      className={`p-2 rounded-lg transition-colors ${
+                      className={`p-2 rounded-lg transition-colors flex-shrink-0 ${
                         isFavorited 
                           ? 'text-pink-600 bg-pink-100 hover:bg-pink-200' 
                           : 'text-gray-400 hover:text-pink-600 hover:bg-pink-50'
@@ -1257,9 +1257,10 @@ const SurveyListItem: React.FC<SurveyCardProps> = ({
               </div>
             </div>
             
-            <p className="text-gray-600 mb-4 leading-relaxed">{survey.description}</p>
+            <p className="text-gray-600 mb-4 leading-relaxed text-sm sm:text-base">{survey.description}</p>
             
-            <div className="flex items-center space-x-6 text-sm text-gray-500 mb-4">
+            {/* Survey stats - responsive layout */}
+            <div className="grid grid-cols-2 sm:flex sm:items-center sm:space-x-6 gap-2 sm:gap-0 text-sm text-gray-500 mb-4">
               <span className="flex items-center space-x-1">
                 <FileText className="h-4 w-4" />
                 <span>{questionCount} questions</span>
@@ -1275,57 +1276,60 @@ const SurveyListItem: React.FC<SurveyCardProps> = ({
               {metadata.population && (
                 <span className="flex items-center space-x-1">
                   <Users className="h-4 w-4" />
-                  <span>{metadata.population}</span>
+                  <span className="truncate">{metadata.population}</span>
                 </span>
               )}
             </div>
 
-            {/* Survey metadata */}
-            <div className="text-sm text-gray-500 mb-4">
-              <div className="flex items-center justify-between">
+            {/* Survey metadata - responsive layout */}
+            <div className="text-sm text-gray-500 mb-4 lg:mb-0">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2">
                 <span>Source: {survey.source}</span>
-                <span>Version {survey.version} • Added {new Date(survey.created_at).toLocaleDateString()}</span>
+                <span className="text-xs sm:text-sm">Version {survey.version} • Added {new Date(survey.created_at).toLocaleDateString()}</span>
               </div>
             </div>
           </div>
           
-          {/* Right side - Actions */}
-          <div className="flex-shrink-0 space-y-2 ml-6 grid">
-            <button
-              onClick={onViewDetails}
-              className="block text-center px-4 py-2 bg-white border border-indigo-600 text-indigo-600 rounded-lg font-medium hover:bg-indigo-50 transition-all duration-200 text-sm"
-            >
-              <ExternalLink className="h-4 w-4 inline mr-1" />
-              View Details
-            </button>
+          {/* Action buttons - responsive layout */}
+          <div className="mt-4 lg:mt-0 lg:ml-6 lg:flex-shrink-0">
+            <div className="flex flex-wrap gap-2 lg:flex-col lg:space-y-2 lg:gap-0 lg:min-w-[140px]">
+              <button
+                onClick={onViewDetails}
+                className="flex-1 lg:flex-none text-center px-3 sm:px-4 py-2 bg-white border border-indigo-600 text-indigo-600 rounded-lg font-medium hover:bg-indigo-50 transition-all duration-200 text-sm"
+              >
+                <ExternalLink className="h-4 w-4 inline mr-1" />
+                <span className="hidden sm:inline">View Details</span>
+                <span className="sm:hidden">Details</span>
+              </button>
 
-            <a
-              href={`/survey/demo-${survey.id}`}
-              className="block text-center px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-all duration-200 text-sm"
-            >
-              <Eye className="h-4 w-4 inline mr-1" />
-              Preview
-            </a>
-            
-            {isLoggedIn && (
-              <button
-                onClick={onCreateLink}
-                className="block text-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg font-medium hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 text-sm"
+              <a
+                href={`/survey/demo-${survey.id}`}
+                className="flex-1 lg:flex-none text-center px-3 sm:px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-all duration-200 text-sm"
               >
-                <Plus className="h-4 w-4 inline mr-1" />
-                Create
-              </button>
-            )}
-            
-            {visibility?.can_edit && (
-              <button
-                onClick={onManage}
-                className="block text-center px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-all duration-200 text-sm"
-              >
-                <Edit className="h-4 w-4 inline mr-1" />
-                Manage
-              </button>
-            )}
+                <Eye className="h-4 w-4 inline mr-1" />
+                <span>Preview</span>
+              </a>
+              
+              {isLoggedIn && (
+                <button
+                  onClick={onCreateLink}
+                  className="flex-1 lg:flex-none text-center px-3 sm:px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg font-medium hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 text-sm"
+                >
+                  <Plus className="h-4 w-4 inline mr-1" />
+                  <span>Create</span>
+                </button>
+              )}
+              
+              {visibility?.can_edit && (
+                <button
+                  onClick={onManage}
+                  className="flex-1 lg:flex-none text-center px-3 sm:px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-all duration-200 text-sm"
+                >
+                  <Edit className="h-4 w-4 inline mr-1" />
+                  <span>Manage</span>
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>

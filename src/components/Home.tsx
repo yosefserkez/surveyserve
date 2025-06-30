@@ -87,7 +87,7 @@ export const Home: React.FC = () => {
       {/* Pricing Overview Bar */}
       <section className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-3xl p-8 border border-green-200">
         <div className="text-center">
-          <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
+          <div className="flex flex-col md:flex-row items-start justify-start space-y-4 md:space-y-0 md:space-x-8">
             <div className="flex items-center space-x-3">
               <div className="bg-green-100 rounded-lg p-3">
                 <Gift className="h-6 w-6 text-green-600" />
@@ -97,7 +97,7 @@ export const Home: React.FC = () => {
                 <p className="text-sm text-gray-600">Start with validated instruments at no cost</p>
               </div>
             </div>
-            <div className="flex items-center space-x-3">
+            <div className="flex items-start space-x-3">
               <div className="bg-blue-100 rounded-lg p-3">
                 <DollarSign className="h-6 w-6 text-blue-600" />
               </div>
@@ -465,7 +465,7 @@ export const Home: React.FC = () => {
       </section> */}
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-16 text-center text-white">
+      <section className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-8 md:p-16 text-center text-white">
         <h2 className="text-4xl font-bold mb-4">Ready to Transform Your Research?</h2>
         <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
           Join researchers worldwide who trust SurveyServe for their data collection needs.

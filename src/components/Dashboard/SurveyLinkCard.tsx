@@ -97,15 +97,26 @@ export const SurveyLinkCard: React.FC<SurveyLinkCardProps> = ({ surveyLink, onUp
     <div className="bg-white/70 backdrop-blur-md rounded-xl border border-white/20 overflow-hidden hover:shadow-lg transition-all duration-200">
       <div className="p-6">
         {/* Header */}
-        <div className="flex items-start justify-between mb-4">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
           <div className="flex-1">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
-              {surveyLink.survey.title}
-            </h3>
+            <div className="flex items-start justify-between mb-2">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 flex-1 pr-3">
+                {surveyLink.survey.title}
+              </h3>
+              <span className={`px-3 py-1 rounded-full text-xs font-medium flex-shrink-0 ${
+                !surveyLink.active ? 'bg-gray-100 text-gray-600' :
+                isExpired || isAtCapacity ? 'bg-red-100 text-red-600' :
+                'bg-green-100 text-green-600'
+              }`}>
+                {!surveyLink.active ? 'Inactive' :
+                 isExpired ? 'Expired' :
+                 isAtCapacity ? 'Full' : 'Active'}
+              </span>
+            </div>
             <p className="text-gray-600 text-sm mb-3">
               {surveyLink.survey.description}
             </p>
-            <div className="flex items-center space-x-4 text-sm text-gray-500">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 gap-1 sm:gap-0 text-sm text-gray-500">
               <span className="flex items-center space-x-1">
                 <Calendar className="h-4 w-4" />
                 <span>Created {new Date(surveyLink.created_at).toLocaleDateString()}</span>
@@ -115,18 +126,6 @@ export const SurveyLinkCard: React.FC<SurveyLinkCardProps> = ({ surveyLink, onUp
                 <span>{responseCount} / {surveyLink.max_responses} responses</span>
               </span>
             </div>
-          </div>
-          
-          <div className="flex items-center space-x-2">
-            <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-              !surveyLink.active ? 'bg-gray-100 text-gray-600' :
-              isExpired || isAtCapacity ? 'bg-red-100 text-red-600' :
-              'bg-green-100 text-green-600'
-            }`}>
-              {!surveyLink.active ? 'Inactive' :
-               isExpired ? 'Expired' :
-               isAtCapacity ? 'Full' : 'Active'}
-            </span>
           </div>
         </div>
 

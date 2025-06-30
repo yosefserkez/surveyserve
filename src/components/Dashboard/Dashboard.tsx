@@ -191,7 +191,7 @@ export const Dashboard: React.FC = () => {
           <h2 className="text-2xl font-semibold text-gray-900">Your Survey Links</h2>
           <Link
             to="/surveys"
-            className="text-indigo-600 hover:text-indigo-700 font-medium flex items-center space-x-1"
+            className="hidden md:flex text-indigo-600 hover:text-indigo-700 font-medium flex items-center space-x-1"
           >
             <span>Browse Survey Library</span>
             <BarChart3 className="h-4 w-4" />
