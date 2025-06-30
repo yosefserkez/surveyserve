@@ -232,8 +232,8 @@ export const EmbedCodeGenerator: React.FC<EmbedCodeGeneratorProps> = ({ surveyLi
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
         <h4 className="font-medium text-blue-900 mb-2">Integration Notes</h4>
         <ul className="text-blue-800 text-sm space-y-1">
-          <li>• Survey responses are collected and stored in your SurveyStack account</li>
-          <li>• The embedded survey has no navigation bar and includes SurveyStack branding</li>
+          <li>• Survey responses are collected and stored in your SurveyServe account</li>
+          <li>• The embedded survey has no navigation bar and includes SurveyServe branding</li>
           <li>• All security settings (password protection, identification) are enforced</li>
           <li>• Survey will respect expiration dates and response limits</li>
           <li>• Mobile-responsive design works on all devices</li>

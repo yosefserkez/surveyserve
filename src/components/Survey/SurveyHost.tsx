@@ -4,6 +4,6 @@ import { EmbeddedSurveyHost } from './EmbeddedSurveyHost';
 
 export const SurveyHost: React.FC = () => {
   // Always use the EmbeddedSurveyHost component for both embedded and direct access
-  // This ensures consistent behavior and the "Powered by SurveyStack" footer
+  // This ensures consistent behavior and the "Powered by SurveyServe" footer
   return <EmbeddedSurveyHost />;
 };

@@ -1,4 +1,4 @@
-# SurveyStack - Research Survey Platform
+# SurveyServe - Research Survey Platform
 
 A comprehensive platform for deploying validated psychological and behavioral surveys with real-time scoring and analytics.
 
@@ -39,7 +39,7 @@ A comprehensive platform for deploying validated psychological and behavioral su
 
 ## Research Instruments
 
-SurveyStack includes a comprehensive library of validated research instruments:
+SurveyServe includes a comprehensive library of validated research instruments:
 
 ### Mental Health Assessments
 - **PHQ-9**: Patient Health Questionnaire for depression screening
@@ -192,7 +192,7 @@ supabase/
 ## Licensing & Attribution
 
 ### Platform License
-SurveyStack platform code is available under the MIT License.
+SurveyServe platform code is available under the MIT License.
 
 ### Research Instruments
 Each instrument maintains its original licensing:
@@ -228,4 +228,4 @@ This platform builds upon decades of psychological research. We acknowledge:
 
 ---
 
-**Note**: While SurveyStack provides validated instruments and scoring algorithms, results should always be interpreted by qualified professionals. This platform is for research and educational purposes.
+**Note**: While SurveyServe provides validated instruments and scoring algorithms, results should always be interpreted by qualified professionals. This platform is for research and educational purposes.

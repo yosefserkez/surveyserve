@@ -43,7 +43,7 @@ export const SignUp: React.FC = () => {
       <div className="bg-white/70 backdrop-blur-md rounded-2xl shadow-xl p-8 w-full max-w-md border border-white/20">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-2">Create Account</h2>
-          <p className="text-gray-600">Join SurveyStack to start your research</p>
+          <p className="text-gray-600">Join SurveyServe to start your research</p>
         </div>
 
         {error && (

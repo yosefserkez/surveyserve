@@ -1,4 +1,4 @@
-# Netlify configuration for SurveyStack SPA routing
+# Netlify configuration for SurveyServe SPA routing
 [build]
   publish = "dist"
   command = "npm run build"

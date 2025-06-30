@@ -1,5 +1,5 @@
 /*
-  # SurveyStack Database Schema
+  # SurveyServe Database Schema
 
   1. New Tables
     - `researchers`

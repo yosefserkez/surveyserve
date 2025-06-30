@@ -258,7 +258,7 @@ function validateInstrument(instrument) {
  * Main execution
  */
 if (import.meta.url === `file://${process.argv[1]}`) {
-  console.log('🏥 SurveyStack Research Instruments Migration Tool\n');
+  console.log('🏥 SurveyServe Research Instruments Migration Tool\n');
   
   migrateInstruments()
     .then(() => {

@@ -241,7 +241,7 @@ export const EmbeddedSurveyHost: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 py-8">
         {children}
         
-        {/* SurveyStack Branding - Always show */}
+        {/* SurveyServe Branding - Always show */}
         <div className="mt-8 text-center">
           <a
             href="https://surveystack.com"
@@ -250,7 +250,7 @@ export const EmbeddedSurveyHost: React.FC = () => {
             className="inline-flex items-center space-x-2 text-sm text-gray-500 hover:text-indigo-600 transition-colors"
           >
             <BarChart3 className="h-4 w-4" />
-            <span>Powered by SurveyStack</span>
+            <span>Powered by SurveyServe</span>
           </a>
         </div>
       </div>

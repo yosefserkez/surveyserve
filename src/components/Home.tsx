@@ -16,7 +16,7 @@ export const Home: React.FC = () => {
             </span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            SurveyStack empowers researchers with a comprehensive platform for deploying
+            SurveyServe empowers researchers with a comprehensive platform for deploying
             validated psychological and behavioral surveys with automatic scoring and instant results.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -44,7 +44,7 @@ export const Home: React.FC = () => {
             Everything You Need for Professional Research
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            From validated instruments to real-time analytics, SurveyStack provides the complete toolkit for modern research.
+            From validated instruments to real-time analytics, SurveyServe provides the complete toolkit for modern research.
           </p>
         </div>
 
@@ -184,7 +184,7 @@ export const Home: React.FC = () => {
       <section className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-16 text-center text-white">
         <h2 className="text-4xl font-bold mb-4">Ready to Transform Your Research?</h2>
         <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-          Join researchers worldwide who trust SurveyStack for their data collection needs.
+          Join researchers worldwide who trust SurveyServe for their data collection needs.
           Start your free trial today and experience the future of survey research.
         </p>
         <Link

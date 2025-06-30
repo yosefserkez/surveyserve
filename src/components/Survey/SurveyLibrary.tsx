@@ -433,7 +433,7 @@ export const SurveyLibrary: React.FC = () => {
               <p className="text-blue-800 text-sm mt-1">
                 These surveys are created and shared by researchers in our community. 
                 While they may be valuable research tools, they are user-contributed content 
-                and have not been officially validated by SurveyStack.
+                and have not been officially validated by SurveyServe.
               </p>
             </div>
           </div>
