@@ -299,12 +299,17 @@ export const SurveyLibrary: React.FC = () => {
   // Fetch data on component mount and filter changes
   useEffect(() => {
     fetchSurveys();
-    fetchSectionCounts();
     if (user) {
       fetchSurveyStats();
       fetchFavorites();
     }
-  }, [user, researcher, filters.section, favorites]);
+    // Only fetch section counts after favorites are loaded on initial load
+  }, [user, researcher, filters.section]);
+
+  // Update section counts when favorites change (after initial load)
+  useEffect(() => {
+    fetchSectionCounts();
+  }, [favorites, researcher]);
 
   // Enhanced filtering and sorting
   const getCategory = (survey: Survey): string => {
