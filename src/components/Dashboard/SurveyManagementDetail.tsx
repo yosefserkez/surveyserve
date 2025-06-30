@@ -74,7 +74,9 @@ export const SurveyManagementDetail: React.FC = () => {
 
       const extendedLink: ExtendedSurveyLink = {
         ...data,
-        response_count: data.response_counts?.total_responses || 0,
+        response_count: Array.isArray(data.response_counts) && data.response_counts.length > 0 
+          ? data.response_counts[0]?.total_responses || 0 
+          : 0,
         last_response: lastResponse?.completed_at || null
       };
 

@@ -81,7 +81,9 @@ export const SurveyManagement: React.FC = () => {
 
           return {
             ...link,
-            response_count: link.response_counts?.total_responses || 0,
+            response_count: Array.isArray(link.response_counts) && link.response_counts.length > 0 
+              ? link.response_counts[0]?.total_responses || 0 
+              : 0,
             last_response: lastResponse?.completed_at || null
           };
         })
