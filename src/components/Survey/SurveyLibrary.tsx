@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabase';
-import { Survey, SurveyVisibilityInfo } from '../../types/survey';
+import { Survey, SurveyVisibilityInfo, Researcher } from '../../types/survey';
+
+// Extended interface for surveys with researcher info
+interface SurveyWithResearcher extends Survey {
+  researcher?: Pick<Researcher, 'name'>;
+}
 import { useAuth } from '../../contexts/AuthContext';
 import { 
   Search, 
@@ -49,7 +54,7 @@ type SurveySection = 'official' | 'community' | 'my-surveys';
 
 export const SurveyLibrary: React.FC = () => {
   const { user, researcher } = useAuth();
-  const [surveys, setSurveys] = useState<Survey[]>([]);
+  const [surveys, setSurveys] = useState<SurveyWithResearcher[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
@@ -60,7 +65,7 @@ export const SurveyLibrary: React.FC = () => {
   const [showCreateLinkModal, setShowCreateLinkModal] = useState(false);
   const [showManagementModal, setShowManagementModal] = useState(false);
   const [selectedSurveyForLink, setSelectedSurveyForLink] = useState<string | null>(null);
-  const [selectedSurveyForManagement, setSelectedSurveyForManagement] = useState<Survey | null>(null);
+  const [selectedSurveyForManagement, setSelectedSurveyForManagement] = useState<SurveyWithResearcher | null>(null);
   const [surveyStats, setSurveyStats] = useState<Record<string, { usage_count: number; last_used: string }>>({});
   const [surveyVisibility, setSurveyVisibility] = useState<Record<string, SurveyVisibilityInfo>>({});
 
@@ -69,7 +74,7 @@ export const SurveyLibrary: React.FC = () => {
     if (user) {
       fetchSurveyStats();
     }
-  }, [user, sectionFilter]);
+  }, [user, researcher, sectionFilter]);
 
   const fetchSurveys = async () => {
     try {
@@ -133,7 +138,9 @@ export const SurveyLibrary: React.FC = () => {
       
       data?.forEach(link => {
         const surveyId = link.survey_id;
-        const responses = link.response_counts?.total_responses || 0;
+        const responses = Array.isArray(link.response_counts) && link.response_counts.length > 0 
+          ? link.response_counts[0]?.total_responses || 0 
+          : 0;
         
         if (!stats[surveyId]) {
           stats[surveyId] = { usage_count: 0, last_used: link.created_at };
@@ -181,7 +188,7 @@ export const SurveyLibrary: React.FC = () => {
     setShowCreateLinkModal(true);
   };
 
-  const handleManageSurvey = (survey: Survey) => {
+  const handleManageSurvey = (survey: SurveyWithResearcher) => {
     setSelectedSurveyForManagement(survey);
     setShowManagementModal(true);
   };
@@ -525,7 +532,7 @@ export const SurveyLibrary: React.FC = () => {
 
 // Enhanced List View Card Component
 interface SurveyCardProps {
-  survey: Survey;
+  survey: SurveyWithResearcher;
   category: string;
   stats?: { usage_count: number; last_used: string };
   visibility?: SurveyVisibilityInfo;
