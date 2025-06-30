@@ -151,7 +151,11 @@ export const SurveyLibrary: React.FC = () => {
 
       const { data, error } = await query.order('title');
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase query error:', error);
+        throw error;
+      }
+      
       setSurveys(data || []);
 
       // Fetch visibility info for authenticated users
@@ -160,6 +164,9 @@ export const SurveyLibrary: React.FC = () => {
       }
     } catch (error) {
       console.error('Error fetching surveys:', error);
+      // Set empty array so the page still renders with an error state
+      setSurveys([]);
+      // You might want to add an error state here to show users what happened
     } finally {
       setLoading(false);
     }

@@ -12,6 +12,8 @@ import { SurveyManagementDetail } from './components/Dashboard/SurveyManagementD
 import { PaymentSuccessPage } from './components/Payment/PaymentSuccessPage';
 import { PaymentCancelPage } from './components/Payment/PaymentCancelPage';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import { DiagnosticInfo } from './components/DiagnosticInfo';
+import { HealthCheck } from './components/HealthCheck';
 
 function App() {
   return (
@@ -64,7 +66,13 @@ function App() {
           
           {/* Survey routes without Layout (no navigation) */}
           <Route path="/survey/:linkCode" element={<SurveyHost />} />
+          
+          {/* Health check route for debugging */}
+          <Route path="/health" element={<HealthCheck />} />
         </Routes>
+        
+        {/* Show diagnostic info in development and production for debugging */}
+        {(import.meta.env.MODE === 'development' || window.location.search.includes('debug=true')) && <DiagnosticInfo />}
       </Router>
     </AuthProvider>
   );

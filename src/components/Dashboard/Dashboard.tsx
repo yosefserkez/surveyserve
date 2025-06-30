@@ -53,10 +53,17 @@ export const Dashboard: React.FC = () => {
         .eq('researcher_id', researcher.id)
         .order('created_at', { ascending: false });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase query error:', error);
+        throw error;
+      }
+      
       setSurveyLinks(data || []);
     } catch (error) {
       console.error('Error fetching survey links:', error);
+      // Set empty array so the page still renders with an error state
+      setSurveyLinks([]);
+      // You might want to add an error state here to show users what happened
     } finally {
       setLoading(false);
     }
