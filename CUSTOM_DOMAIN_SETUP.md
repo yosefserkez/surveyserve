@@ -66,7 +66,17 @@ Ensure your environment variables are properly set in your hosting platform:
    - `VITE_SUPABASE_URL`
    - `VITE_SUPABASE_ANON_KEY`
 
-### 4. DNS Configuration
+### 4. Platform-Specific Configuration
+
+**For Vercel:**
+- Ensure `vercel.json` is properly configured (included in this project)
+- The `vercel.json` file handles SPA routing and CORS headers
+
+**For Netlify:**
+- Ensure `netlify.toml` is properly configured (included in this project)
+- The `netlify.toml` file handles SPA routing and CORS headers
+
+### 5. DNS Configuration
 
 Ensure your custom domain is properly configured:
 
@@ -74,7 +84,7 @@ Ensure your custom domain is properly configured:
 2. **CNAME Record**: Point to your hosting provider's domain
 3. **SSL Certificate**: Ensure HTTPS is enabled
 
-### 5. Testing
+### 6. Testing
 
 After making these changes:
 
@@ -83,7 +93,7 @@ After making these changes:
 3. **Check browser console** for any CORS errors
 4. **Use the Health Check page** at `/health` to verify environment variables
 
-### 6. Debugging
+### 7. Debugging
 
 If issues persist:
 
@@ -98,7 +108,7 @@ If issues persist:
         https://your-project.supabase.co/rest/v1/
    ```
 
-### 7. Common Issues
+### 8. Common Issues
 
 **Issue**: "CORS policy: No 'Access-Control-Allow-Origin' header"
 - **Solution**: Add domain to Supabase allowed origins
@@ -109,15 +119,36 @@ If issues persist:
 **Issue**: Authentication errors
 - **Solution**: Verify Supabase URL and anon key are correct
 
+## Immediate Fix for 404 Errors on Vercel
+
+If you're getting 404 errors on routes like `/surveys`, the issue is that Vercel needs a `vercel.json` file to handle SPA routing. This has been added to your project.
+
+**Deploy the fix:**
+
+1. **Commit and push** the new `vercel.json` file:
+   ```bash
+   git add vercel.json
+   git commit -m "Add Vercel configuration for SPA routing"
+   git push
+   ```
+
+2. **Redeploy** your Vercel project (it should automatically redeploy when you push)
+
+3. **Deploy updated Supabase Edge Functions**:
+   ```bash
+   supabase functions deploy
+   ```
+
 ## Verification Steps
 
 1. ✅ Custom domain added to Supabase allowed origins
 2. ✅ CORS configuration updated
 3. ✅ Environment variables set correctly
-4. ✅ DNS properly configured
-5. ✅ SSL certificate active
-6. ✅ Browser cache cleared
-7. ✅ Health check page shows all green
+4. ✅ Platform configuration file (`vercel.json` or `netlify.toml`)
+5. ✅ DNS properly configured
+6. ✅ SSL certificate active
+7. ✅ Browser cache cleared
+8. ✅ Health check page shows all green
 
 ## Support
 
