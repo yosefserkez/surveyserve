@@ -178,7 +178,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Pricing Section */}
-      <PricingSection />
+      {/* <PricingSection /> */}
 
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-16 text-center text-white">
