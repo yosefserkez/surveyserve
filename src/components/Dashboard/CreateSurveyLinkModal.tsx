@@ -206,7 +206,7 @@ export const CreateSurveyLinkModal: React.FC<CreateSurveyLinkModalProps> = ({
                   <h4 className="font-medium text-blue-900">Payment Required</h4>
                   <p className="text-blue-800 text-sm mt-1">
                     This survey requires a one-time payment of {formatPrice(surveyPrice, selectedSurvey?.currency)} 
-                    to create a survey link. You will be redirected to secure Stripe checkout.
+                    &nbsp;to create a survey link. You will be redirected to secure Stripe checkout.
                   </p>
                 </div>
               </div>
