@@ -173,46 +173,49 @@ export const CreateSurveyModal: React.FC<CreateSurveyModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
-          <h2 className="text-2xl font-bold text-gray-900">Create Custom Survey</h2>
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-2 sm:p-4 z-50">
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
+        <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200">
+          <h2 className="text-lg sm:text-2xl font-bold text-gray-900">Create Custom Survey</h2>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors"
+            className="text-gray-400 hover:text-gray-600 transition-colors p-1"
           >
-            <X className="h-6 w-6" />
+            <X className="h-5 w-5 sm:h-6 sm:w-6" />
           </button>
         </div>
 
         {/* Step Navigator */}
-        <div className="px-6 py-4 border-b border-gray-200">
-          <div className="flex items-center space-x-4">
-            {[
-              { id: 'basic', label: 'Basic Info', icon: FileText },
-              { id: 'questions', label: 'Questions', icon: CheckCircle },
-              { id: 'scoring', label: 'Scoring', icon: Calculator },
-              { id: 'review', label: 'Review', icon: Target }
-            ].map((step, index) => (
-              <React.Fragment key={step.id}>
-                <button
-                  onClick={() => setCurrentStep(step.id as any)}
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors ${
-                    currentStep === step.id
-                      ? 'bg-indigo-100 text-indigo-700'
-                      : 'text-gray-600 hover:text-gray-800'
-                  }`}
-                >
-                  <step.icon className="h-4 w-4" />
-                  <span>{step.label}</span>
-                </button>
-                {index < 3 && <div className="h-px bg-gray-300 flex-1" />}
-              </React.Fragment>
-            ))}
+        <div className="px-4 sm:px-6 py-3 sm:py-4 border-b border-gray-200">
+          <div className="overflow-x-auto">
+            <div className="flex items-center space-x-2 sm:space-x-4 min-w-max">
+              {[
+                { id: 'basic', label: 'Basic Info', icon: FileText, shortLabel: 'Basic' },
+                { id: 'questions', label: 'Questions', icon: CheckCircle, shortLabel: 'Questions' },
+                { id: 'scoring', label: 'Scoring', icon: Calculator, shortLabel: 'Scoring' },
+                { id: 'review', label: 'Review', icon: Target, shortLabel: 'Review' }
+              ].map((step, index) => (
+                <React.Fragment key={step.id}>
+                  <button
+                    onClick={() => setCurrentStep(step.id as any)}
+                    className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors whitespace-nowrap ${
+                      currentStep === step.id
+                        ? 'bg-indigo-100 text-indigo-700'
+                        : 'text-gray-600 hover:text-gray-800'
+                    }`}
+                  >
+                    <step.icon className="h-4 w-4 flex-shrink-0" />
+                    <span className="hidden sm:inline">{step.label}</span>
+                    <span className="sm:hidden">{step.shortLabel}</span>
+                  </button>
+                  {index < 3 && <div className="h-px bg-gray-300 flex-1" />}
+                </React.Fragment>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           {/* Basic Information Step */}
           {currentStep === 'basic' && (
             <div className="space-y-6">
@@ -245,7 +248,7 @@ export const CreateSurveyModal: React.FC<CreateSurveyModalProps> = ({
                   />
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Source/Citation *
@@ -338,11 +341,11 @@ export const CreateSurveyModal: React.FC<CreateSurveyModalProps> = ({
           {/* Questions Step */}
           {currentStep === 'questions' && (
             <div className="space-y-6">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                 <h3 className="text-lg font-semibold text-gray-900">Survey Questions</h3>
                 <button
                   onClick={addQuestion}
-                  className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                  className="flex items-center justify-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
                 >
                   <Plus className="h-4 w-4" />
                   <span>Add Question</span>
@@ -352,9 +355,9 @@ export const CreateSurveyModal: React.FC<CreateSurveyModalProps> = ({
               <div className="space-y-4">
                 {questions.map((question, index) => (
                   <div key={question.id} className="border border-gray-200 rounded-lg p-4">
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <div className="flex items-center space-x-2 mb-2">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-2">
                           <span className="bg-indigo-100 text-indigo-700 px-2 py-1 rounded text-sm font-medium">
                             Q{index + 1}
                           </span>
@@ -362,22 +365,22 @@ export const CreateSurveyModal: React.FC<CreateSurveyModalProps> = ({
                             {question.type}
                           </span>
                         </div>
-                        <p className="text-gray-900">{question.text}</p>
+                        <div className="flex items-center space-x-2">
+                          <button
+                            onClick={() => setEditingQuestion(question)}
+                            className="text-indigo-600 hover:text-indigo-700 text-sm px-2 py-1"
+                          >
+                            Edit
+                          </button>
+                          <button
+                            onClick={() => removeQuestion(question.id)}
+                            className="text-red-600 hover:text-red-700 p-1"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </button>
+                        </div>
                       </div>
-                      <div className="flex items-center space-x-2">
-                        <button
-                          onClick={() => setEditingQuestion(question)}
-                          className="text-indigo-600 hover:text-indigo-700"
-                        >
-                          Edit
-                        </button>
-                        <button
-                          onClick={() => removeQuestion(question.id)}
-                          className="text-red-600 hover:text-red-700"
-                        >
-                          <Trash2 className="h-4 w-4" />
-                        </button>
-                      </div>
+                      <p className="text-gray-900 text-sm sm:text-base">{question.text}</p>
                     </div>
                   </div>
                 ))}
@@ -395,11 +398,11 @@ export const CreateSurveyModal: React.FC<CreateSurveyModalProps> = ({
           {/* Scoring Step */}
           {currentStep === 'scoring' && (
             <div className="space-y-6">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                 <h3 className="text-lg font-semibold text-gray-900">Scoring Rules</h3>
                 <button
                   onClick={addScoringRule}
-                  className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                  className="flex items-center justify-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
                 >
                   <Plus className="h-4 w-4" />
                   <span>Add Rule</span>
@@ -409,9 +412,9 @@ export const CreateSurveyModal: React.FC<CreateSurveyModalProps> = ({
               <div className="space-y-4">
                 {Object.entries(scoringRules).map(([name, rule]) => (
                   <div key={name} className="border border-gray-200 rounded-lg p-4">
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <div className="flex items-center space-x-2 mb-2">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-2">
                           <span className="bg-green-100 text-green-700 px-2 py-1 rounded text-sm font-medium capitalize">
                             {name.replace(/_/g, ' ')}
                           </span>
@@ -419,24 +422,24 @@ export const CreateSurveyModal: React.FC<CreateSurveyModalProps> = ({
                             {rule.type}
                           </span>
                         </div>
-                        <p className="text-gray-600 text-sm">
-                          {rule.questions?.length} questions selected
-                        </p>
+                        <div className="flex items-center space-x-2">
+                          <button
+                            onClick={() => setEditingRule({ name, rule })}
+                            className="text-indigo-600 hover:text-indigo-700 text-sm px-2 py-1"
+                          >
+                            Edit
+                          </button>
+                          <button
+                            onClick={() => removeScoringRule(name)}
+                            className="text-red-600 hover:text-red-700 p-1"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </button>
+                        </div>
                       </div>
-                      <div className="flex items-center space-x-2">
-                        <button
-                          onClick={() => setEditingRule({ name, rule })}
-                          className="text-indigo-600 hover:text-indigo-700"
-                        >
-                          Edit
-                        </button>
-                        <button
-                          onClick={() => removeScoringRule(name)}
-                          className="text-red-600 hover:text-red-700"
-                        >
-                          <Trash2 className="h-4 w-4" />
-                        </button>
-                      </div>
+                      <p className="text-gray-600 text-sm">
+                        {rule.questions?.length} questions selected
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -456,7 +459,7 @@ export const CreateSurveyModal: React.FC<CreateSurveyModalProps> = ({
             <div className="space-y-6">
               <h3 className="text-lg font-semibold text-gray-900">Review & Create Survey</h3>
               
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-medium text-gray-900">Survey Information</h4>
@@ -512,15 +515,15 @@ export const CreateSurveyModal: React.FC<CreateSurveyModalProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="flex justify-between items-center p-6 border-t border-gray-200">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 p-4 sm:p-6 border-t border-gray-200">
           <button
             onClick={onClose}
-            className="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
+            className="w-full sm:w-auto px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors order-2 sm:order-1"
           >
             Cancel
           </button>
           
-          <div className="flex items-center space-x-3">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:space-x-3 order-1 sm:order-2">
             {currentStep !== 'basic' && (
               <button
                 onClick={() => {
@@ -530,7 +533,7 @@ export const CreateSurveyModal: React.FC<CreateSurveyModalProps> = ({
                     setCurrentStep(steps[currentIndex - 1] as any);
                   }
                 }}
-                className="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
+                className="w-full sm:w-auto px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Previous
               </button>
@@ -548,7 +551,7 @@ export const CreateSurveyModal: React.FC<CreateSurveyModalProps> = ({
                   }
                 }}
                 disabled={!canProceed()}
-                className="px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full sm:w-auto px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Next Step
               </button>
@@ -556,7 +559,7 @@ export const CreateSurveyModal: React.FC<CreateSurveyModalProps> = ({
               <button
                 onClick={handleSubmit}
                 disabled={loading}
-                className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg font-medium hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+                className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg font-medium hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
               >
                 <Save className="h-4 w-4" />
                 <span>{loading ? 'Creating...' : 'Create Survey'}</span>
@@ -617,9 +620,9 @@ const QuestionEditor: React.FC<{
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[60]">
-      <div className="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto">
-        <div className="p-6">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-2 sm:p-4 z-[60]">
+      <div className="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[85vh] sm:max-h-[80vh] overflow-y-auto">
+        <div className="p-4 sm:p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Edit Question</h3>
           
           <div className="space-y-4">
@@ -702,17 +705,17 @@ const QuestionEditor: React.FC<{
             </div>
           </div>
 
-          <div className="flex justify-end space-x-3 mt-6">
+          <div className="flex flex-col sm:flex-row sm:justify-end gap-3 sm:space-x-3 mt-6">
             <button
               onClick={onCancel}
-              className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
+              className="w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors order-2 sm:order-1"
             >
               Cancel
             </button>
             <button
               onClick={() => editedQuestion.text && onSave(editedQuestion)}
               disabled={!editedQuestion.text}
-              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors disabled:opacity-50"
+              className="w-full sm:w-auto px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors disabled:opacity-50 order-1 sm:order-2"
             >
               Save Question
             </button>
@@ -736,9 +739,9 @@ const ScoringRuleEditor: React.FC<{
   const [editedRule, setEditedRule] = useState<ScoringRule>({ ...rule });
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[60]">
-      <div className="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto">
-        <div className="p-6">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-2 sm:p-4 z-[60]">
+      <div className="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[85vh] sm:max-h-[80vh] overflow-y-auto">
+        <div className="p-4 sm:p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Edit Scoring Rule</h3>
           
           <div className="space-y-4">
@@ -825,17 +828,17 @@ const ScoringRuleEditor: React.FC<{
             )}
           </div>
 
-          <div className="flex justify-end space-x-3 mt-6">
+          <div className="flex flex-col sm:flex-row sm:justify-end gap-3 sm:space-x-3 mt-6">
             <button
               onClick={onCancel}
-              className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
+              className="w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors order-2 sm:order-1"
             >
               Cancel
             </button>
             <button
               onClick={() => editedName && onSave(editedName, editedRule)}
               disabled={!editedName}
-              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors disabled:opacity-50"
+              className="w-full sm:w-auto px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors disabled:opacity-50 order-1 sm:order-2"
             >
               Save Rule
             </button>

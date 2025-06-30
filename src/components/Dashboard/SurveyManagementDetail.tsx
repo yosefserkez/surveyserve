@@ -123,67 +123,74 @@ export const SurveyManagementDetail: React.FC = () => {
     <div className="space-y-6">
       {/* Header */}
       <div className="bg-white/70 backdrop-blur-md rounded-xl border border-white/20 overflow-hidden">
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
-          <div className="flex items-center space-x-4">
+        <div className="p-4 sm:p-6 border-b border-gray-200">
+          {/* Back button and title */}
+          <div className="flex flex-col space-y-4">
             <button
               onClick={() => navigate('/dashboard')}
-              className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors"
+              className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors self-start"
             >
               <ArrowLeft className="h-5 w-5" />
               <span>Back to Dashboard</span>
             </button>
-            <div className="h-6 w-px bg-gray-300" />
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">{surveyLink.survey.title}</h1>
-              <p className="text-sm text-gray-600">
-                Link Code: <span className="font-mono">{surveyLink.link_code}</span>
-              </p>
-            </div>
-          </div>
-          
-          <div className="flex items-center space-x-4 text-sm text-gray-600">
-            <div className="text-center">
-              <p className="font-medium text-gray-900">{surveyLink.response_count}</p>
-              <p>Responses</p>
-            </div>
-            <div className="text-center">
-              <p className="font-medium text-gray-900">
-                {Math.round((surveyLink.response_count / surveyLink.max_responses) * 100)}%
-              </p>
-              <p>Complete</p>
-            </div>
-            <div className={`px-3 py-1 rounded-full text-xs font-medium ${
-              surveyLink.active 
-                ? 'bg-green-100 text-green-700' 
-                : 'bg-gray-100 text-gray-700'
-            }`}>
-              {surveyLink.active ? 'Active' : 'Inactive'}
+            
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+              <div className="mb-4 lg:mb-0">
+                <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">{surveyLink.survey.title}</h1>
+                <p className="text-sm text-gray-600">
+                  Link Code: <span className="font-mono text-xs sm:text-sm break-all">{surveyLink.link_code}</span>
+                </p>
+              </div>
+              
+              {/* Stats - responsive layout */}
+              <div className="flex items-center justify-between sm:justify-start sm:space-x-6 text-sm text-gray-600">
+                <div className="text-center">
+                  <p className="font-medium text-gray-900 text-lg sm:text-xl">{surveyLink.response_count}</p>
+                  <p className="text-xs sm:text-sm">Responses</p>
+                </div>
+                <div className="text-center">
+                  <p className="font-medium text-gray-900 text-lg sm:text-xl">
+                    {Math.round((surveyLink.response_count / surveyLink.max_responses) * 100)}%
+                  </p>
+                  <p className="text-xs sm:text-sm">Complete</p>
+                </div>
+                <div className={`px-3 py-1 rounded-full text-xs font-medium ${
+                  surveyLink.active 
+                    ? 'bg-green-100 text-green-700' 
+                    : 'bg-gray-100 text-gray-700'
+                }`}>
+                  {surveyLink.active ? 'Active' : 'Inactive'}
+                </div>
+              </div>
             </div>
           </div>
         </div>
         
         {/* Navigation Tabs */}
-        <div className="flex border-b border-gray-200">
-          {[
-            { id: 'details', label: 'Survey Details', icon: FileText },
-            { id: 'submissions', label: 'Submissions', icon: Users },
-            { id: 'scoring', label: 'Scoring', icon: BarChart3 },
-            { id: 'embed', label: 'Embed Code', icon: Code },
-            { id: 'admin', label: 'Admin', icon: Shield }
-          ].map(tab => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id as any)}
-              className={`flex items-center space-x-2 px-6 py-4 font-medium transition-colors ${
-                activeTab === tab.id
-                  ? 'text-indigo-600 border-b-2 border-indigo-600 bg-indigo-50'
-                  : 'text-gray-600 hover:text-gray-800 hover:bg-gray-50'
-              }`}
-            >
-              <tab.icon className="h-4 w-4" />
-              <span>{tab.label}</span>
-            </button>
-          ))}
+        <div className="border-b border-gray-200 overflow-x-auto">
+          <div className="flex min-w-max">
+            {[
+              { id: 'details', label: 'Survey Details', icon: FileText, shortLabel: 'Details' },
+              { id: 'submissions', label: 'Submissions', icon: Users, shortLabel: 'Submissions' },
+              { id: 'scoring', label: 'Scoring', icon: BarChart3, shortLabel: 'Scoring' },
+              { id: 'embed', label: 'Embed Code', icon: Code, shortLabel: 'Embed' },
+              { id: 'admin', label: 'Admin', icon: Shield, shortLabel: 'Admin' }
+            ].map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id as any)}
+                className={`flex items-center space-x-2 px-4 sm:px-6 py-4 font-medium transition-colors whitespace-nowrap ${
+                  activeTab === tab.id
+                    ? 'text-indigo-600 border-b-2 border-indigo-600 bg-indigo-50'
+                    : 'text-gray-600 hover:text-gray-800 hover:bg-gray-50'
+                }`}
+              >
+                <tab.icon className="h-4 w-4 flex-shrink-0" />
+                <span className="hidden sm:inline">{tab.label}</span>
+                <span className="sm:hidden">{tab.shortLabel}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 

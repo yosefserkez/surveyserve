@@ -451,8 +451,8 @@ export const SurveyLibrary: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 py-4 sm:py-6 lg:py-8">
         {/* Header Section */}
         <Header 
           onCreateSurvey={() => setShowCreateModal(true)}
@@ -550,25 +550,25 @@ export const SurveyLibrary: React.FC = () => {
 
 // Component: Loading State
 const LoadingState: React.FC = () => (
-  <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center">
-    <div className="text-center">
-      <div className="inline-flex items-center space-x-3 mb-6">
-        <div className="animate-spin rounded-full h-8 w-8 border-3 border-indigo-200 border-t-indigo-600"></div>
-        <div className="text-xl font-semibold text-gray-700">Loading Survey Library...</div>
+  <div className="min-h-screen bg-gray-50 flex items-center justify-center px-3 sm:px-4">
+    <div className="text-center w-full max-w-4xl">
+      <div className="inline-flex items-center space-x-3 mb-4 sm:mb-6">
+        <div className="animate-spin rounded-full h-6 w-6 sm:h-8 sm:w-8 border-3 border-indigo-200 border-t-indigo-600"></div>
+        <div className="text-lg sm:text-xl font-semibold text-gray-700">Loading Survey Library...</div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         {Array.from({ length: 6 }).map((_, i) => (
-          <div key={i} className="bg-white/70 backdrop-blur-sm rounded-xl border border-white/20 p-6 animate-pulse">
-            <div className="flex items-start space-x-3 mb-4">
-              <div className="bg-gray-200 rounded-lg w-12 h-12"></div>
+          <div key={i} className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6 animate-pulse">
+            <div className="flex items-start space-x-3 mb-3 sm:mb-4">
+              <div className="bg-gray-200 rounded-lg w-10 h-10 sm:w-12 sm:h-12"></div>
               <div className="flex-1">
-                <div className="bg-gray-200 rounded w-3/4 h-4 mb-2"></div>
-                <div className="bg-gray-200 rounded w-1/2 h-3"></div>
+                <div className="bg-gray-200 rounded w-3/4 h-3 sm:h-4 mb-2"></div>
+                <div className="bg-gray-200 rounded w-1/2 h-2 sm:h-3"></div>
               </div>
             </div>
             <div className="space-y-2">
-              <div className="bg-gray-200 rounded w-full h-3"></div>
-              <div className="bg-gray-200 rounded w-5/6 h-3"></div>
+              <div className="bg-gray-200 rounded w-full h-2 sm:h-3"></div>
+              <div className="bg-gray-200 rounded w-5/6 h-2 sm:h-3"></div>
             </div>
           </div>
         ))}
@@ -584,21 +584,22 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ onCreateSurvey, isLoggedIn }) => (
-  <div className="text-center mb-12">
-    <div className="inline-flex items-center space-x-4 mb-6">
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-4">
-        <BookOpen className="h-12 w-12 text-white" />
+  <div className="text-center mb-6 sm:mb-8 lg:mb-12">
+    <div className="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4 mb-4 sm:mb-6">
+      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl sm:rounded-2xl p-3 sm:p-4">
+        <BookOpen className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 text-white" />
       </div>
-      <div className="text-left">
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">Survey Library</h1>
-        <div className="flex items-center space-x-2 text-lg text-gray-600">
-          <Sparkles className="h-5 w-5 text-indigo-500" />
-          <span>Validated research instruments at your fingertips</span>
+      <div className="text-center sm:text-left">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-1 sm:mb-2">Survey Library</h1>
+        <div className="flex items-center justify-center sm:justify-start space-x-2 text-sm sm:text-base lg:text-lg text-gray-600">
+          <Sparkles className="h-4 w-4 sm:h-5 sm:w-5 text-indigo-500" />
+          <span className="hidden sm:inline">Validated research instruments at your fingertips</span>
+          <span className="sm:hidden">Research instruments at your fingertips</span>
         </div>
       </div>
     </div>
     
-    <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed">
+    <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-4xl mx-auto mb-4 sm:mb-6 lg:mb-8 leading-relaxed px-2 sm:px-0">
       Explore our curated collection of peer-reviewed psychological and behavioral assessment instruments. 
       Each survey includes automated scoring, detailed documentation, and normative data.
     </p>
@@ -606,12 +607,12 @@ const Header: React.FC<HeaderProps> = ({ onCreateSurvey, isLoggedIn }) => (
     {isLoggedIn && (
       <button
         onClick={onCreateSurvey}
-        className="group relative bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+        className="group relative bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 w-full sm:w-auto max-w-sm sm:max-w-none"
       >
-        <span className="flex items-center space-x-3">
-          <Plus className="h-5 w-5" />
-          <span>Create Custom Survey</span>
-          <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
+        <span className="flex items-center justify-center space-x-2 sm:space-x-3">
+          <Plus className="h-4 w-4 sm:h-5 sm:w-5" />
+          <span className="text-sm sm:text-base">Create Custom Survey</span>
+          <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 transform group-hover:translate-x-1 transition-transform" />
         </span>
       </button>
     )}
@@ -635,21 +636,24 @@ const SectionTabs: React.FC<SectionTabsProps> = ({
   const tabs = [
     { 
       id: 'official' as SurveySection, 
-      label: 'Official', 
+      label: 'Official',
+      shortLabel: 'Official',
       icon: ShieldCheck, 
       count: sectionStats.official,
       color: 'blue'
     },
     { 
       id: 'all' as SurveySection, 
-      label: 'All Surveys', 
+      label: 'All Surveys',
+      shortLabel: 'All',
       icon: Globe, 
       count: sectionStats.all,
       color: 'indigo'
     },
     { 
       id: 'community' as SurveySection, 
-      label: 'Community', 
+      label: 'Community',
+      shortLabel: 'Community',
       icon: Users2, 
       count: sectionStats.community,
       color: 'green'
@@ -657,14 +661,16 @@ const SectionTabs: React.FC<SectionTabsProps> = ({
     ...(isLoggedIn ? [
       { 
         id: 'my-surveys' as SurveySection, 
-        label: 'My Surveys', 
+        label: 'My Surveys',
+        shortLabel: 'Mine',
         icon: UserCheck, 
         count: sectionStats.mySurveys,
         color: 'purple'
       },
       { 
         id: 'favorites' as SurveySection, 
-        label: 'Favorites', 
+        label: 'Favorites',
+        shortLabel: 'Favs',
         icon: Heart, 
         count: sectionStats.favorites,
         color: 'pink'
@@ -673,7 +679,7 @@ const SectionTabs: React.FC<SectionTabsProps> = ({
   ];
 
   const getTabStyles = (tabId: SurveySection, isActive: boolean) => {
-    const baseStyles = "flex items-center space-x-3 px-6 py-4 font-semibold transition-all duration-200 border-b-3 relative";
+    const baseStyles = "flex items-center space-x-2 sm:space-x-3 px-3 sm:px-6 py-3 sm:py-4 font-semibold transition-all duration-200 border-b-3 relative whitespace-nowrap flex-shrink-0";
     
     if (isActive) {
       switch (tabId) {
@@ -709,7 +715,7 @@ const SectionTabs: React.FC<SectionTabsProps> = ({
   };
 
   const getBadgeStyles = (tabId: SurveySection, isActive: boolean) => {
-    const baseStyles = "px-2 py-1 rounded-full text-xs font-bold";
+    const baseStyles = "px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full text-xs font-bold min-w-[1.25rem] text-center";
     
     if (isActive) {
       switch (tabId) {
@@ -749,9 +755,9 @@ const SectionTabs: React.FC<SectionTabsProps> = ({
   };
 
   return (
-    <div className="bg-white/80 backdrop-blur-md rounded-2xl border border-white/30 shadow-lg mb-8 overflow-hidden">
-      <div className="flex overflow-x-auto scrollbar-hide">
-        {tabs.map(({ id, label, icon: Icon, count }) => {
+    <div className="bg-white rounded-xl sm:rounded-2xl border border-gray-200 shadow-md mb-4 sm:mb-6 lg:mb-8 overflow-hidden">
+      <div className="flex overflow-x-auto scrollbar-hide px-1 sm:px-0">
+        {tabs.map(({ id, label, shortLabel, icon: Icon, count }) => {
           const isActive = currentSection === id;
           return (
             <button
@@ -760,7 +766,8 @@ const SectionTabs: React.FC<SectionTabsProps> = ({
               className={getTabStyles(id, isActive)}
             >
               <Icon className="h-5 w-5" />
-              <span>{label}</span>
+              <span className="hidden sm:inline">{label}</span>
+              <span className="sm:hidden">{shortLabel}</span>
               <span className={getBadgeStyles(id, isActive)}>
                 {count}
               </span>
@@ -794,25 +801,25 @@ const SearchAndFilters: React.FC<SearchAndFiltersProps> = ({
   const categories = Object.keys(categoryStats).filter(cat => cat !== 'all');
   
   return (
-    <div className="bg-white/80 backdrop-blur-md rounded-2xl border border-white/30 shadow-lg p-6 mb-8">
+    <div className="bg-white rounded-xl sm:rounded-2xl border border-gray-200 shadow-md p-3 sm:p-4 lg:p-6 mb-4 sm:mb-6 lg:mb-8">
       {/* Main search and filter row */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-3 sm:mb-4">
         {/* Enhanced Search */}
-        <div className="lg:col-span-2 relative group">
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 group-focus-within:text-indigo-500 transition-colors" />
+        <div className="sm:col-span-2 relative group">
+          <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-gray-400 group-focus-within:text-indigo-500 transition-colors" />
           <input
             type="text"
             value={filters.search}
             onChange={(e) => onFilterChange('search', e.target.value)}
-            placeholder="Search by title, description, author, or keyword..."
-            className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white/70 backdrop-blur-sm transition-all duration-200 placeholder-gray-400"
+            placeholder="Search surveys..."
+            className="w-full pl-10 sm:pl-12 pr-8 sm:pr-10 py-2.5 sm:py-3 border border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white transition-all duration-200 placeholder-gray-400 text-sm sm:text-base"
           />
           {filters.search && (
             <button
               onClick={() => onFilterChange('search', '')}
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              className="absolute right-2 sm:right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
             >
-              <X className="h-4 w-4" />
+              <X className="h-3 w-3 sm:h-4 sm:w-4" />
             </button>
           )}
         </div>
@@ -822,7 +829,7 @@ const SearchAndFilters: React.FC<SearchAndFiltersProps> = ({
           <select
             value={filters.category}
             onChange={(e) => onFilterChange('category', e.target.value)}
-            className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white/70 backdrop-blur-sm appearance-none transition-all duration-200"
+            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white appearance-none transition-all duration-200 text-sm sm:text-base"
           >
             <option value="all">All Categories ({categoryStats.all})</option>
             {categories.map(category => (
@@ -831,7 +838,7 @@ const SearchAndFilters: React.FC<SearchAndFiltersProps> = ({
               </option>
             ))}
           </select>
-          <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
+          <ChevronDown className="absolute right-2 sm:right-3 top-1/2 transform -translate-y-1/2 h-3 w-3 sm:h-4 sm:w-4 text-gray-400 pointer-events-none" />
         </div>
         
         {/* Sort By */}
@@ -839,14 +846,14 @@ const SearchAndFilters: React.FC<SearchAndFiltersProps> = ({
           <select
             value={filters.sortBy}
             onChange={(e) => onFilterChange('sortBy', e.target.value)}
-            className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white/70 backdrop-blur-sm appearance-none transition-all duration-200"
+            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white appearance-none transition-all duration-200 text-sm sm:text-base"
           >
             <option value="title">Sort by Title</option>
             <option value="created">Newest First</option>
             <option value="popular">Most Popular</option>
             <option value="recent">Recently Used</option>
           </select>
-          <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
+          <ChevronDown className="absolute right-2 sm:right-3 top-1/2 transform -translate-y-1/2 h-3 w-3 sm:h-4 sm:w-4 text-gray-400 pointer-events-none" />
         </div>
       </div>
 

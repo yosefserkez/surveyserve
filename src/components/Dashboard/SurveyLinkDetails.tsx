@@ -69,7 +69,7 @@ export const SurveyLinkDetails: React.FC<SurveyLinkDetailsProps> = ({ surveyLink
   return (
     <div className="space-y-6">
       {/* Survey Information */}
-      <div className="bg-white/70 backdrop-blur-md rounded-xl p-6 border border-white/20">
+      <div className="bg-white/70 backdrop-blur-md rounded-xl p-4 sm:p-6 border border-white/20">
         <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
           <FileText className="h-5 w-5 mr-2" />
           Survey Information
@@ -109,7 +109,7 @@ export const SurveyLinkDetails: React.FC<SurveyLinkDetailsProps> = ({ surveyLink
       </div>
 
       {/* Link Configuration */}
-      <div className="bg-white/70 backdrop-blur-md rounded-xl p-6 border border-white/20">
+      <div className="bg-white/70 backdrop-blur-md rounded-xl p-4 sm:p-6 border border-white/20">
         <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
           <Globe className="h-5 w-5 mr-2" />
           Link Configuration
@@ -118,29 +118,31 @@ export const SurveyLinkDetails: React.FC<SurveyLinkDetailsProps> = ({ surveyLink
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Survey URL</label>
-            <div className="flex items-center space-x-2">
+            <div className="space-y-2">
               <input
                 type="text"
                 value={surveyUrl}
                 readOnly
-                className="flex-1 px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm"
+                className="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm"
               />
-              <button
-                onClick={copyToClipboard}
-                className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors text-sm flex items-center space-x-1"
-              >
-                <Copy className="h-4 w-4" />
-                <span>{copied ? 'Copied!' : 'Copy'}</span>
-              </button>
-              <a
-                href={surveyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm flex items-center space-x-1"
-              >
-                <ExternalLink className="h-4 w-4" />
-                <span>Preview</span>
-              </a>
+              <div className="flex flex-col sm:flex-row gap-2">
+                <button
+                  onClick={copyToClipboard}
+                  className="flex-1 sm:flex-none px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors text-sm flex items-center justify-center space-x-1"
+                >
+                  <Copy className="h-4 w-4" />
+                  <span>{copied ? 'Copied!' : 'Copy'}</span>
+                </button>
+                <a
+                  href={surveyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 sm:flex-none px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm flex items-center justify-center space-x-1"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  <span>Preview</span>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -176,26 +178,30 @@ export const SurveyLinkDetails: React.FC<SurveyLinkDetailsProps> = ({ surveyLink
             </div>
             
             {editingExpiration ? (
-              <div className="flex items-center space-x-2">
+              <div className="space-y-2">
                 <input
                   type="datetime-local"
                   value={newExpiration}
                   onChange={(e) => setNewExpiration(e.target.value)}
-                  className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 />
-                <button
-                  onClick={handleExpirationSave}
-                  disabled={loading}
-                  className="px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50"
-                >
-                  <Save className="h-4 w-4" />
-                </button>
-                <button
-                  onClick={() => setEditingExpiration(false)}
-                  className="px-3 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
-                >
-                  <X className="h-4 w-4" />
-                </button>
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <button
+                    onClick={handleExpirationSave}
+                    disabled={loading}
+                    className="flex-1 sm:flex-none px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 flex items-center justify-center space-x-1"
+                  >
+                    <Save className="h-4 w-4" />
+                    <span>Save</span>
+                  </button>
+                  <button
+                    onClick={() => setEditingExpiration(false)}
+                    className="flex-1 sm:flex-none px-3 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors flex items-center justify-center space-x-1"
+                  >
+                    <X className="h-4 w-4" />
+                    <span>Cancel</span>
+                  </button>
+                </div>
               </div>
             ) : (
               <p className="text-gray-900">
@@ -210,7 +216,7 @@ export const SurveyLinkDetails: React.FC<SurveyLinkDetailsProps> = ({ surveyLink
       </div>
 
       {/* Privacy & Security Settings */}
-      <div className="bg-white/70 backdrop-blur-md rounded-xl p-6 border border-white/20">
+      <div className="bg-white/70 backdrop-blur-md rounded-xl p-4 sm:p-6 border border-white/20">
         <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
           <Shield className="h-5 w-5 mr-2" />
           Privacy & Security Settings
@@ -308,7 +314,7 @@ export const SurveyLinkDetails: React.FC<SurveyLinkDetailsProps> = ({ surveyLink
       </div>
 
       {/* Question Structure */}
-      <div className="bg-white/70 backdrop-blur-md rounded-xl p-6 border border-white/20">
+      <div className="bg-white/70 backdrop-blur-md rounded-xl p-4 sm:p-6 border border-white/20">
         <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
           <FileText className="h-5 w-5 mr-2" />
           Question Structure
