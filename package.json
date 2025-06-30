@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "migrate-instruments": "node scripts/migrate-instruments.js",
+    "update-cors": "node scripts/update-cors-domains.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },

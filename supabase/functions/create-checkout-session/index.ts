@@ -17,7 +17,7 @@ Deno.serve(async (req) => {
 
   try {
     if (req.method !== 'POST') {
-      return createResponse({ error: 'Method not allowed' }, 405);
+      return createResponse({ error: 'Method not allowed' }, 405, req);
     }
 
     const { 
@@ -31,24 +31,24 @@ Deno.serve(async (req) => {
 
     // Validate required fields
     if (!surveyId || !surveyTitle || !price || !researcherId || !surveyLinkConfig) {
-      return createResponse({ error: 'Missing required fields' }, 400);
+      return createResponse({ error: 'Missing required fields' }, 400, req);
     }
 
     // Validate price
     if (price <= 0 || price > 999999.99) {
-      return createResponse({ error: 'Invalid price amount' }, 400);
+      return createResponse({ error: 'Invalid price amount' }, 400, req);
     }
 
     // Validate currency
     const supportedCurrencies = ['USD', 'EUR', 'GBP', 'CAD', 'AUD'];
     if (!supportedCurrencies.includes(currency)) {
-      return createResponse({ error: 'Unsupported currency' }, 400);
+      return createResponse({ error: 'Unsupported currency' }, 400, req);
     }
 
     // Get auth header
     const authHeader = req.headers.get('Authorization');
     if (!authHeader) {
-      return createResponse({ error: 'Authorization header required' }, 401);
+      return createResponse({ error: 'Authorization header required' }, 401, req);
     }
 
     // Verify user
@@ -57,11 +57,11 @@ Deno.serve(async (req) => {
     );
 
     if (userError || !user) {
-      return createResponse({ error: 'Invalid user token' }, 401);
+      return createResponse({ error: 'Invalid user token' }, 401, req);
     }
 
     if (user.id !== researcherId) {
-      return createResponse({ error: 'User mismatch' }, 403);
+      return createResponse({ error: 'User mismatch' }, 403, req);
     }
 
     // Create payment session record
@@ -77,7 +77,7 @@ Deno.serve(async (req) => {
 
     if (sessionError) {
       console.error('Payment session creation error:', sessionError);
-      return createResponse({ error: 'Failed to create payment session' }, 500);
+      return createResponse({ error: 'Failed to create payment session' }, 500, req);
     }
 
     // Create Stripe checkout session
@@ -117,13 +117,14 @@ Deno.serve(async (req) => {
       sessionId: session.id,
       url: session.url,
       paymentSessionId: paymentSession.id,
-    });
+    }, 200, req);
 
   } catch (error) {
     console.error('Checkout session creation error:', error);
     return createResponse(
       { error: error.message || 'Failed to create checkout session' },
-      500
+      500,
+      req
     );
   }
 });

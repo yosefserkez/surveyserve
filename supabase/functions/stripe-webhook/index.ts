@@ -19,14 +19,14 @@ Deno.serve(async (req) => {
 
   try {
     if (req.method !== 'POST') {
-      return createResponse({ error: 'Method not allowed' }, 405);
+      return createResponse({ error: 'Method not allowed' }, 405, req);
     }
 
     const body = await req.text();
     const signature = req.headers.get('stripe-signature');
 
     if (!signature) {
-      return createResponse({ error: 'Missing stripe signature' }, 400);
+      return createResponse({ error: 'Missing stripe signature' }, 400, req);
     }
 
     // Verify webhook signature
@@ -35,7 +35,7 @@ Deno.serve(async (req) => {
       event = await stripe.webhooks.constructEventAsync(body, signature, webhookSecret);
     } catch (err) {
       console.error('Webhook signature verification failed:', err);
-      return createResponse({ error: 'Invalid signature' }, 400);
+      return createResponse({ error: 'Invalid signature' }, 400, req);
     }
 
     console.log('Processing webhook event:', event);
