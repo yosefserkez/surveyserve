@@ -80,6 +80,16 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {children}
       </main>
+      {/* Built by Bolt Badge */}
+      <div className="fixed bottom-4 left-4 z-50">
+        <a href="https://bolt.new" target="_blank" rel="noopener noreferrer">
+          <img
+            src="/built_by_bolt.png"
+            alt="Built by Bolt"
+            className="w-16 h-16 rounded-full shadow-lg border border-gray-200 bg-white"
+          />
+        </a>
+      </div>
     </div>
   );
 };
