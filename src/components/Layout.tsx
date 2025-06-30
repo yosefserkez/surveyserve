@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { useSubscription } from '../hooks/useSubscription';
-import { BarChart3, LogOut, User, Crown } from 'lucide-react';
+import { BarChart3, LogOut, User } from 'lucide-react';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -10,7 +9,6 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { user, researcher, signOut } = useAuth();
-  const { subscription, loading: subscriptionLoading } = useSubscription();
 
   const handleSignOut = async () => {
     try {
@@ -46,19 +44,6 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                 >
                   Survey Library
                 </Link>
-                
-                {/* Subscription Status */}
-                {!subscriptionLoading && subscription && (
-                  <div className="flex items-center space-x-2 px-3 py-1 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-full">
-                    <Crown className="h-4 w-4 text-indigo-600" />
-                    <span className="text-sm font-medium text-indigo-700">
-                      {subscription.subscription_status === 'active' ? 'Pro Plan' : 
-                       subscription.subscription_status === 'trialing' ? 'Trial' :
-                       subscription.subscription_status === 'not_started' ? 'Free Plan' :
-                       'Inactive'}
-                    </span>
-                  </div>
-                )}
                 
                 <div className="flex items-center space-x-2 text-sm text-gray-600">
                   <User className="h-4 w-4" />
