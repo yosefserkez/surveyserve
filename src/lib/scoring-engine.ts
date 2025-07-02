@@ -185,15 +185,17 @@ export class ScoringEngine {
         return sumResult;
 
       case 'average':
+      case 'mean':
         if (!rule.questions || rule.questions.length === 0) return 0;
         const sum = rule.questions.reduce((total, qId) => total + this.getQuestionValue(qId), 0);
         const avgResult = sum / rule.questions.length;
         
         // Apply formula if present
         if (rule.formula) {
-          // Create temporary scope with the average result
-          const tempScores = { ...computedScores, average: avgResult };
-          return this.evaluateFormula(rule.formula.replace(/\baverage\b/g, 'average'), tempScores);
+          // Create temporary scope with the average/mean result
+          // Use the rule type as the variable name in the temporary scope
+          const tempScores = { ...computedScores, [rule.type]: avgResult };
+          return this.evaluateFormula(rule.formula.replace(new RegExp(`\\b${rule.type}\\b`, 'g'), rule.type), tempScores);
         }
         
         return avgResult;

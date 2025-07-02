@@ -13,7 +13,7 @@ export interface Question {
 }
 
 export interface ScoringRule {
-  type: 'sum' | 'average' | 'computed' | 'threshold' | 'flag';
+  type: 'sum' | 'average' | 'mean' | 'computed' | 'threshold' | 'flag';
   questions?: string[];
   input?: string;
   thresholds?: Array<{
