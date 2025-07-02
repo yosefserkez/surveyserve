@@ -31,7 +31,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2" onClick={closeMobileMenu}>
-              <img src="/public/logo.svg" alt="SurveyServe Logo" className="h-8 w-8" />
+              <img src="/logo.svg" alt="SurveyServe Logo" className="h-8 w-8" />
               <span className="text-xl  bg-gradient-to-r from-[#9313f9] to-[#9313f9] bg-clip-text text-transparent">
                 SurveyServe
               </span>

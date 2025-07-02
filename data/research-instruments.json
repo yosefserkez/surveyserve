@@ -8272,166 +8272,61 @@
       "currency": "USD",
       "schema": {
         "questions": [
-          {
-            "id": "q1",
-            "text": "I plan tasks carefully",
-            "type": "likert",
-            "options": [
-              {
-                "value": 1,
-                "label": "Rarely/Never"
-              },
-              {
-                "value": 2,
-                "label": "Occasionally"
-              },
-              {
-                "value": 3,
-                "label": "Often"
-              },
-              {
-                "value": 4,
-                "label": "Almost Always/Always"
-              }
-            ],
-            "reverse_score": true,
-            "subscale": "nonplanning"
-          },
-          {
-            "id": "q2",
-            "text": "I do things without thinking",
-            "type": "likert",
-            "options": [
-              {
-                "value": 1,
-                "label": "Rarely/Never"
-              },
-              {
-                "value": 2,
-                "label": "Occasionally"
-              },
-              {
-                "value": 3,
-                "label": "Often"
-              },
-              {
-                "value": 4,
-                "label": "Almost Always/Always"
-              }
-            ],
-            "reverse_score": false,
-            "subscale": "motor"
-          },
-          {
-            "id": "q3",
-            "text": "I make-up my mind quickly",
-            "type": "likert",
-            "options": [
-              {
-                "value": 1,
-                "label": "Rarely/Never"
-              },
-              {
-                "value": 2,
-                "label": "Occasionally"
-              },
-              {
-                "value": 3,
-                "label": "Often"
-              },
-              {
-                "value": 4,
-                "label": "Almost Always/Always"
-              }
-            ],
-            "reverse_score": false,
-            "subscale": "nonplanning"
-          },
-          {
-            "id": "q4",
-            "text": "I am happy-go-lucky",
-            "type": "likert",
-            "options": [
-              {
-                "value": 1,
-                "label": "Rarely/Never"
-              },
-              {
-                "value": 2,
-                "label": "Occasionally"
-              },
-              {
-                "value": 3,
-                "label": "Often"
-              },
-              {
-                "value": 4,
-                "label": "Almost Always/Always"
-              }
-            ],
-            "reverse_score": false,
-            "subscale": "motor"
-          },
-          {
-            "id": "q5",
-            "text": "I don't pay attention",
-            "type": "likert",
-            "options": [
-              {
-                "value": 1,
-                "label": "Rarely/Never"
-              },
-              {
-                "value": 2,
-                "label": "Occasionally"
-              },
-              {
-                "value": 3,
-                "label": "Often"
-              },
-              {
-                "value": 4,
-                "label": "Almost Always/Always"
-              }
-            ],
-            "reverse_score": false,
-            "subscale": "attention"
-          }
+          {"id": "q1", "text": "I plan tasks carefully", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": true, "subscale": "nonplanning"},
+          {"id": "q2", "text": "I do things without thinking", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": false, "subscale": "motor"},
+          {"id": "q3", "text": "I make-up my mind quickly", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": false, "subscale": "nonplanning"},
+          {"id": "q4", "text": "I am happy-go-lucky", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": false, "subscale": "motor"},
+          {"id": "q5", "text": "I don't pay attention", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": false, "subscale": "attention"},
+          {"id": "q6", "text": "I have racing thoughts", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": false, "subscale": "attention"},
+          {"id": "q7", "text": "I plan trips well ahead of time", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": true, "subscale": "nonplanning"},
+          {"id": "q8", "text": "I am self controlled", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": true, "subscale": "nonplanning"},
+          {"id": "q9", "text": "I concentrate easily", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": true, "subscale": "attention"},
+          {"id": "q10", "text": "I save regularly", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": true, "subscale": "nonplanning"},
+          {"id": "q11", "text": "I squirm at plays or lectures", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": false, "subscale": "attention"},
+          {"id": "q12", "text": "I am a careful thinker", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": true, "subscale": "nonplanning"},
+          {"id": "q13", "text": "I plan for job security", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": true, "subscale": "nonplanning"},
+          {"id": "q14", "text": "I say things without thinking", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": false, "subscale": "motor"},
+          {"id": "q15", "text": "I like to think about complex problems", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": true, "subscale": "attention"},
+          {"id": "q16", "text": "I change jobs", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": false, "subscale": "motor"},
+          {"id": "q17", "text": "I act on the spur of the moment", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": false, "subscale": "motor"},
+          {"id": "q18", "text": "I am a steady thinker", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": true, "subscale": "attention"},
+          {"id": "q19", "text": "I change residences", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": false, "subscale": "motor"},
+          {"id": "q20", "text": "I buy things on impulse", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": false, "subscale": "motor"},
+          {"id": "q21", "text": "I can only think about one thing at a time", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": false, "subscale": "attention"},
+          {"id": "q22", "text": "I change hobbies", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": false, "subscale": "motor"},
+          {"id": "q23", "text": "I spend or charge more than I earn", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": false, "subscale": "nonplanning"},
+          {"id": "q24", "text": "I often have extraneous thoughts when thinking", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": false, "subscale": "attention"},
+          {"id": "q25", "text": "I am more interested in the present than the future", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": false, "subscale": "nonplanning"},
+          {"id": "q26", "text": "I am restless at the theater or lectures", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": false, "subscale": "attention"},
+          {"id": "q27", "text": "I like puzzles", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": true, "subscale": "attention"},
+          {"id": "q28", "text": "I am future oriented", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": true, "subscale": "nonplanning"},
+          {"id": "q29", "text": "I am easily bored", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": false, "subscale": "attention"},
+          {"id": "q30", "text": "I act on impulse", "type": "likert", "options": [{"value": 1, "label": "Rarely/Never"}, {"value": 2, "label": "Occasionally"}, {"value": 3, "label": "Often"}, {"value": 4, "label": "Almost Always/Always"}], "reverse_score": false, "subscale": "motor"}
         ],
         "scoring_rules": {
           "attentional_impulsiveness": {
             "type": "sum",
-            "questions": [
-              "q5"
-            ],
-            "description": "Attentional impulsiveness subscale (partial)"
+            "questions": ["q5", "q6", "q9", "q11", "q15", "q18", "q21", "q24", "q26", "q27", "q29"],
+            "description": "Attentional impulsiveness subscale"
           },
           "motor_impulsiveness": {
             "type": "sum",
-            "questions": [
-              "q2",
-              "q4"
-            ],
-            "description": "Motor impulsiveness subscale (partial)"
+            "questions": ["q2", "q4", "q14", "q16", "q17", "q19", "q20", "q22", "q30"],
+            "description": "Motor impulsiveness subscale"
           },
           "nonplanning_impulsiveness": {
             "type": "sum",
-            "questions": [
-              "q1",
-              "q3"
-            ],
-            "description": "Non-planning impulsiveness subscale (partial)"
+            "questions": ["q1", "q3", "q7", "q8", "q10", "q12", "q13", "q23", "q25", "q28"],
+            "description": "Non-planning impulsiveness subscale"
           },
           "total_impulsiveness": {
             "type": "sum",
             "questions": [
-              "q1",
-              "q2",
-              "q3",
-              "q4",
-              "q5"
+              "q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10",
+              "q11", "q12", "q13", "q14", "q15", "q16", "q17", "q18", "q19", "q20",
+              "q21", "q22", "q23", "q24", "q25", "q26", "q27", "q28", "q29", "q30"
             ],
-            "description": "Total impulsiveness score (partial scale)"
+            "description": "Total impulsiveness score"
           }
         }
       },
